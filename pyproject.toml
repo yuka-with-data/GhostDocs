@@ -1,0 +1,31 @@
+
+# Define the build system used to package GhostDocs.
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+# Define project metadata and runtime dependencies.
+[project]
+name = "ghostdocs"
+version = "0.1.0"
+description = "A local-first documentation analysis tool that uncovers forgotten knowledge using Ollama."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ollama",
+]
+
+# Define development dependencies for testing and code quality.
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pylint",
+]
+
+# Configure setuptools to discover packages in the src directory.
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Configure pytest to discover tests in the tests directory.
+[tool.pytest.ini_options]
+testpaths = ["tests"]
