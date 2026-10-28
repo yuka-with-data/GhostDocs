@@ -39,3 +39,43 @@ def test_find_unfinished_business():
     assert findings[0]["marker"] == "TODO"
     assert findings[1]["marker"] == "FIXME"
     assert findings[2]["marker"] == "XXX"
+
+# Test README checks and the combined analysis result.
+def test_check_documentation_basics():
+    # Confirm missing and empty README files are detected.
+    from ghostdocs.analyzer import check_documentation_basics
+
+    assert check_documentation_basics([])[0]["type"] == "missing_readme"
+
+    documents = [{"path": "README.md", "content": "  \n"}]
+    findings = check_documentation_basics(documents)
+
+    assert len(findings) == 1
+    assert findings[0]["type"] == "empty_readme"
+
+
+def test_check_documentation_basics_with_content():
+    # Confirm a README with content produces no findings.
+    from ghostdocs.analyzer import check_documentation_basics
+
+    documents = [{"path": "README.md", "content": "# My Project"}]
+
+    assert check_documentation_basics(documents) == []
+
+
+def test_analyze_project():
+    # Confirm the final analysis combines inventory and findings.
+    from ghostdocs.analyzer import analyze_project
+
+    documents = [
+        {"path": "README.md", "content": "# Project\nTODO: Add setup"},
+    ]
+
+    result = analyze_project("example-project", documents)
+
+    assert result["inventory"]["project_name"] == "example-project"
+    assert result["inventory"]["document_count"] == 1
+    assert any(
+        finding["type"] == "unfinished_business"
+        for finding in result["findings"]
+    )

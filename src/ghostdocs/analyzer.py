@@ -59,3 +59,48 @@ def find_unfinished_business(documents):
 
     # Return all findings for the Ghost Report.
     return findings
+
+def check_documentation_basics(documents):
+    """ Report whether the project README is missing or empty. """
+    readmes = [
+        document
+        for document in documents
+        if Path(document["path"]).name.lower() in {
+            "readme.md", "readme.mdx", "readme.rst", "readme.txt"
+        }
+    ]
+
+    # Report a missing README if none was found.
+    if not readmes:
+        return [{
+            "type": "missing_readme",
+            "path": "README.md",
+            "message": "No README file found.",
+        }]
+
+    # Report README files that contain no meaningful content.
+    findings = []
+    for readme in readmes:
+        if not readme["content"].strip():
+            findings.append({
+                "type": "empty_readme",
+                "path": readme["path"],
+                "message": "README file is empty.",
+            })
+
+    return findings
+
+# Combine the inventory and deterministic findings for later AI analysis.
+def analyze_project(project_path, documents):
+    """ Colelct repo context and combine analysis findings. """
+    inventory = inventory_project(project_path, documents)
+
+    # Run the basic checks and combine their findings.
+    findings = find_unfinished_business(documents)
+    findings.extend(check_documentation_basics(documents))
+
+    # Return a consistent result for the report generator.
+    return {
+        "inventory": inventory,
+        "findings": findings,
+    }
