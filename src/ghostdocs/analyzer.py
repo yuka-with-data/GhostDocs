@@ -37,4 +37,25 @@ def inventory_project(project_path, documents):
 
 # Find unfinished-work markers in scanned documentation
 def find_unfinished_business(documents):
-    pass
+    """Return TODO, FIXME, and XXX markers found in documents."""
+    markers = ("TODO", "FIXME", "XXX")
+    findings = []
+
+    # Check each line of each document for unfinished-work markers.
+    for document in documents:
+        for line_number, line in enumerate(
+            document["content"].splitlines(), start=1
+        ):
+            for marker in markers:
+                if marker in line.upper():
+                    findings.append({
+                        "type": "unfinished_business",
+                        "path": document["path"],
+                        "line": line_number,
+                        "marker": marker,
+                        "message": line.strip(),
+                    })
+                    break
+
+    # Return all findings for the Ghost Report.
+    return findings
