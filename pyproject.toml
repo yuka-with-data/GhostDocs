@@ -15,6 +15,10 @@ dependencies = [
     "ollama",
 ]
 
+# Register the GhostDocs command-line executable.
+[project.scripts]
+ghostdocs = "ghostdocs.cli:main"
+
 # Define development dependencies for testing and code quality.
 [project.optional-dependencies]
 dev = [
