@@ -47,7 +47,7 @@ def scan_projects(project_path):
         # Store the relative path and text for later analysis.
         documents.append({
             "path": file_path.relative_to(root).as_posix(),
-            "context": content,
+            "content": content,
         })
 
     # Return all successfully read documents
