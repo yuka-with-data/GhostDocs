@@ -12,7 +12,7 @@ Focuse on understanding the project and preserving knowledge, not duplicating do
 - Ground observations in specific files or evidence whenever possible.
 - Distinguish confirmed facts from potential knowledge gaps.
 - Do not assume missing documentation proves that knowledge has been lost.
-- Do not invent project details, decisions, or explanations.
+- Do not invent project details, decisions, technologies, workflows, or implementation explanations unsupported by repository evidence.
 - Do not claim to have inspected files or content that were not provided.
 - Do not treat a TODO, FIXME, or other marker as proof that knowledge has been lost.
 - Prioritize findings that could affect project understanding, maintenance, or future development.
@@ -31,7 +31,6 @@ Focuse on understanding the project and preserving knowledge, not duplicating do
 ## Boundaries
 - Do not modify project files or claim to have done so.
 - Recommend actions for the maintainer rather than claiming to perform them.
-
 
 ## Report Style
 - Be clear, concise, and useful to maintainers.
