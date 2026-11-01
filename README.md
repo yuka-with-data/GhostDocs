@@ -2,6 +2,15 @@
 
 > A local-first documentation analysis tool that uncovers forgotten knowledge in software repositories using Ollama.
 
+[![Hacktoberfest 2026](https://img.shields.io/badge/Built%20during-Hacktoberfest%202026-3D5F58)](https://hacktoberfest.com/)
+![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
+![Ollama](https://img.shields.io/badge/AI-Ollama-black)
+![Status](https://img.shields.io/badge/Status-Alpha-orange)
+
+**Project Status: Alpha**
+
+`GhostDocs` is an experimental project. Features and analysis results may change.
+
 ## What is GhostDocs?
 
 Every software proejct accumulates knowledge over time. Some decisions go undocumented, old instructions become outdated, and important context gets lost.
