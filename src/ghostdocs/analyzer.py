@@ -15,6 +15,7 @@ KEY_FILE_NAMES = {
 }
 
 def inventory_project(project_path, documents):
+    """ Return a summary of the scanned project content. """
     root = Path(project_path)
     inventory = {
         "project_name": root.name,
@@ -92,7 +93,7 @@ def check_documentation_basics(documents):
 
 # Combine the inventory and deterministic findings for later AI analysis.
 def analyze_project(project_path, documents):
-    """ Colelct repo context and combine analysis findings. """
+    """ Collect repo context and combine analysis findings. """
     inventory = inventory_project(project_path, documents)
 
     # Run the basic checks and combine their findings.

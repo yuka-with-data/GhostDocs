@@ -1,9 +1,15 @@
 """Test repository inventory and analysis helpers."""
 
-from ghostdocs.analyzer import inventory_project, find_unfinished_business
+# Import analyzer functions used by the tests.
+from ghostdocs.analyzer import (
+    inventory_project,
+    find_unfinished_business,
+    check_documentation_basics,
+    analyze_project
+)
 
 def test_inventory_project():
-    # Confirm the inventory identifies documentation and key files.
+    """ Confirm the inventory identifies documentation and key files. """
     documents = [
         {"path": "README.md", "content": "# Example"},
         {"path": "docs/setup.md", "content": "Setup instructions"},
@@ -19,7 +25,7 @@ def test_inventory_project():
     assert "pyproject.toml" in inventory["key_project_files"]
 
 def test_find_unfinished_business():
-    # Confirm markers are detected with their file paths and line numbers.
+    """ Confirm markers are detected with their file paths and line numbers. """
     documents = [
         {
             "path": "README.md",
@@ -42,9 +48,7 @@ def test_find_unfinished_business():
 
 # Test README checks and the combined analysis result.
 def test_check_documentation_basics():
-    # Confirm missing and empty README files are detected.
-    from ghostdocs.analyzer import check_documentation_basics
-
+    """ Confirm missing and empty README files are detected. """
     assert check_documentation_basics([])[0]["type"] == "missing_readme"
 
     documents = [{"path": "README.md", "content": "  \n"}]
@@ -55,18 +59,14 @@ def test_check_documentation_basics():
 
 
 def test_check_documentation_basics_with_content():
-    # Confirm a README with content produces no findings.
-    from ghostdocs.analyzer import check_documentation_basics
-
+    """ Confirm a README with content produces no findings. """
     documents = [{"path": "README.md", "content": "# My Project"}]
 
-    assert check_documentation_basics(documents) == []
+    assert not check_documentation_basics(documents)
 
 
 def test_analyze_project():
-    # Confirm the final analysis combines inventory and findings.
-    from ghostdocs.analyzer import analyze_project
-
+    """ Confirm the final analysis combines inventory and findings. """
     documents = [
         {"path": "README.md", "content": "# Project\nTODO: Add setup"},
     ]
