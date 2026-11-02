@@ -29,9 +29,9 @@ Its goal is to answer one question:
 - Identifies potential knowledge gaps using rule-based analysis.
 - Uses local AI analysis through Ollama to investigate findings and their context.
 - Generates Markdown reports organized into three sections:
-    - 👻 Lost Knowledge
-    - 🕯️ Ghost Sightings
-    - 🎃 Resurrection Plan
+  - 👻 Lost Knowledge
+  - 🕯️ Ghost Sightings
+  - 🎃 Resurrection Plan
 
 `GhostDocs` is designed to help maintainers reflect on what their projects might be missing and decide what deserves further investigation.
 
@@ -44,7 +44,6 @@ Its goal is to answer one question:
 3. Build context: Prepare repository findings for AI analysis.
 4. Investigate: Use Ollama to examine the findings and their supporting context.
 5. Generate: Produce a Markdown report with observations and suggested actions.
-
 
 ## Requirements
 
