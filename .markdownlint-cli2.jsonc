@@ -8,6 +8,8 @@
     // Don't enforce maximum line length.
     "MD013": false,
     // Don't enforce ordered list item prefixes.
-    "MD029": false
+    "MD029": false,
+    // Allow emphasis to be used instead of headings.
+    "MD036": false
   }
 }
