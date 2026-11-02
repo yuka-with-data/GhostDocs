@@ -45,6 +45,9 @@ Its goal is to answer one question:
 4. Investigate: Use Ollama to examine the findings and their supporting context.
 5. Generate: Produce a Markdown report with observations and suggested actions.
 
+>[!NOTE]
+> GhostDocs uses version-controlled prompt templates stored in `src/ghostdocs/prompts/`. These templates are publicly available for transparancy, inspection, and customization.
+
 ## Requirements
 
 - Python 3.12 or newer
