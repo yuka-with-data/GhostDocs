@@ -1,7 +1,8 @@
 {
   "gitignore": true,
   "globs": [
-    "**/*.md"
+    "**/*.md",
+    "!examples/reports/**/*.md"
   ],
   "config": {
     // Don't enforce maximum line length.
