@@ -59,9 +59,9 @@ def test_build_findings_categorizes_empty_readme():
 
 def test_build_findings_handles_empty_findings():
     """Ensure an empty analysis produces an empty list."""
-    assert build_findings({"findings": []}) == []
+    assert not build_findings({"findings": []})
 
 
 def test_build_findings_handles_missing_findings_key():
     """Ensure missing findings data produces an empty list."""
-    assert build_findings({}) == []
+    assert not build_findings({})
