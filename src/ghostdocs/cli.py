@@ -35,8 +35,9 @@ def main() -> None:
 
         # Save the same report when an output path is provided.
         if args.output:
+            args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(report + "\n", encoding="utf-8")
-            print(f"\nReport saved to: {args.output}")
+            print(f"\nReport saved to: {args.output.resolve()}")
 
     except (ValueError, RuntimeError, OSError) as exc:
         # Show expected errors without printing a traceback.
