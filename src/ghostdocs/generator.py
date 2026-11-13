@@ -6,6 +6,7 @@ import ollama
 from ghostdocs.analyzer import analyze_project
 from ghostdocs.prompts import load_system_prompt, prepare_analysis_prompt
 from ghostdocs.scanner import scan_projects
+from ghostdocs.findings import build_findings
 
 # Set sensible defaults for small personal repositories.
 DEFAULT_MODEL = "gemma4:e4b"
@@ -31,10 +32,12 @@ def generate_report(
     # Scan and analyze the repository using the existing modules.
     documents = scan_projects(project_path)
     analysis = analyze_project(project_path, documents)
+    findings = build_findings(analysis)
 
     # Prepare a compact context from the inventory, findings, and documents.
     repository_context = (
-        f"Project inventory and findings:\n{analysis}\n\n"
+        f"Project inventory:\n{analysis['inventory']}\n\n"
+        f"Structured findings:\n{findings}\n\n"
     )
 
     for document in documents:
