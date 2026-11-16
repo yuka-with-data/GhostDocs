@@ -1,9 +1,7 @@
 """Test the documentation scanner."""
 
 import pytest
-
 from ghostdocs.scanner import scan_projects
-
 
 def test_scan_finds_supported_files(tmp_path):
     """Confirm supported files are collected with their contents."""
@@ -56,10 +54,10 @@ def test_scan_empty_directory(tmp_path):
     """Confirm an empty project returns empty results and metadata."""
     results = scan_projects(tmp_path)
 
-    assert results["documents"] == []
+    assert not results["documents"]
     assert results["metadata"]["total_documents"] == 0
-    assert results["metadata"]["extension_counts"] == {}
-    assert results["metadata"]["directory_counts"] == {}
+    assert not results["metadata"]["extension_counts"]
+    assert not results["metadata"]["directory_counts"]
 
 
 def test_scan_rejects_missing_directory(tmp_path):

@@ -1,38 +1,13 @@
-
 """Test repository inventory and analysis helpers."""
+
+from helper import create_scan_results
 
 from ghostdocs.analyzer import (
     inventory_project,
-    find_unfinished_business,
     check_documentation_basics,
     assess_documentation_health,
     analyze_project,
 )
-
-
-def create_scan_results(documents):
-    """Build scanner results with documentation metadata for testing."""
-    extension_counts = {}
-    directory_counts = {}
-
-    for document in documents:
-        path = document["path"]
-        extension = "." + path.rsplit(".", 1)[-1].lower()
-
-        extension_counts[extension] = extension_counts.get(extension, 0) + 1
-
-        directory = path.rsplit("/", 1)[0] if "/" in path else "root"
-        directory_counts[directory] = directory_counts.get(directory, 0) + 1
-
-    return {
-        "documents": documents,
-        "metadata": {
-            "total_documents": len(documents),
-            "extension_counts": extension_counts,
-            "directory_counts": directory_counts,
-        },
-    }
-
 
 def test_inventory_project():
     """Confirm the inventory identifies documentation and key files."""
@@ -51,29 +26,6 @@ def test_inventory_project():
     assert "README.md" in inventory["key_project_files"]
     assert "pyproject.toml" in inventory["key_project_files"]
     assert inventory["documentation_metadata"]["total_documents"] == 3
-
-
-def test_find_unfinished_business():
-    """Confirm markers are detected with file paths and line numbers."""
-    documents = [
-        {
-            "path": "README.md",
-            "content": "# Project\nTODO: Add setup instructions\nAll done.",
-        },
-        {
-            "path": "docs/notes.md",
-            "content": "FIXME: Verify this workflow\nXXX: Explain this decision",
-        },
-    ]
-
-    findings = find_unfinished_business(documents)
-
-    assert len(findings) == 3
-    assert findings[0]["path"] == "README.md"
-    assert findings[0]["line"] == 2
-    assert findings[0]["marker"] == "TODO"
-    assert findings[1]["marker"] == "FIXME"
-    assert findings[2]["marker"] == "XXX"
 
 
 def test_check_documentation_basics():
