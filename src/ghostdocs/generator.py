@@ -13,6 +13,7 @@ DEFAULT_MODEL = "gemma4:e4b"
 DEFAULT_CONTEXT_BUDGET = 24_000
 DEFAULT_NUM_CTX = 16_384
 
+
 def generate_report(
     project_path: str | Path,
     model: str = DEFAULT_MODEL,
@@ -29,24 +30,30 @@ def generate_report(
     if num_ctx <= 0:
         raise ValueError("num_ctx must be greater than zero.")
 
-    # Scan and analyze the repository using the existing modules.
-    documents = scan_projects(project_path)
-    analysis = analyze_project(project_path, documents)
+    # Scan and analyze the repository.
+    scan_results = scan_projects(project_path)
+    analysis = analyze_project(project_path, scan_results)
     findings = build_findings(analysis)
 
-    # Prepare a compact context from the inventory, findings, and documents.
+    documents = scan_results["documents"]
+
+    # Prepare repository context for documentation intelligence.
     repository_context = (
         f"Project inventory:\n{analysis['inventory']}\n\n"
-        f"Structured findings:\n{findings}\n\n"
+        f"Documentation Overview:\n"
+        f"{findings['documentation_overview']}\n\n"
+        f"Documentation Health:\n"
+        f"{findings['documentation_health']}\n\n"
+        f"Structured findings:\n{findings['findings']}\n\n"
     )
 
+    # Add document contents within the configured context budget.
     for document in documents:
         section = (
             f"--- FILE: {document['path']} ---\n"
             f"{document['content']}\n\n"
         )
 
-        # Stop adding files when the character budget is reached.
         if len(repository_context) + len(section) > context_budget:
             break
 
