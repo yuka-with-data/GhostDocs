@@ -23,7 +23,7 @@ Identify potential gaps in project understanding, setup, decisions, assumptions,
 Present specific evidence that suggests a knowledge gap.
 Reference relevant file paths and explain why each clue matters.
 
-### 🩻 Documentation Health
+### 🩺 Documentation Health
 Provide a concise assessment of documentation completeness and potential issues.
 Use available metadata and findings. Avoid unsupported scores or assumptions.
 
