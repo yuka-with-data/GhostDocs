@@ -1,8 +1,8 @@
-""" Analyze scanned repository content for signs of forgotten knowledge. """
+"""Analyze scanned repository content for documentation intelligence."""
 
 from pathlib import Path
 
-# Identify project files that provide useful context
+# Identify project files that provide useful context.
 KEY_FILE_NAMES = {
     "readme.md",
     "contributing.md",
@@ -14,35 +14,37 @@ KEY_FILE_NAMES = {
     "dockerfile",
 }
 
-def inventory_project(project_path, documents):
-    """ Return a summary of the scanned project content. """
+
+def inventory_project(project_path, scan_results):
+    """Return a summary of project documentation and metadata."""
     root = Path(project_path)
+    documents = scan_results["documents"]
+
     inventory = {
         "project_name": root.name,
         "documentation_files": [],
         "key_project_files": [],
         "document_count": len(documents),
+        "documentation_metadata": scan_results["metadata"],
     }
 
-    # Record the paths of documentation files already scanned.
+    # Record scanned documentation paths and identify key project files.
     for document in documents:
         path = document["path"]
         inventory["documentation_files"].append(path)
 
-        # Identify key files by their filenames
         if Path(path).name.lower() in KEY_FILE_NAMES:
             inventory["key_project_files"].append(path)
 
-    # Return the inventory for later analysis
     return inventory
 
-# Find unfinished-work markers in scanned documentation
+
 def find_unfinished_business(documents):
     """Return TODO, FIXME, and XXX markers found in documents."""
     markers = ("TODO", "FIXME", "XXX")
     findings = []
 
-    # Check each line of each document for unfinished-work markers.
+    # Check each line for unfinished-work markers.
     for document in documents:
         for line_number, line in enumerate(
             document["content"].splitlines(), start=1
@@ -58,11 +60,11 @@ def find_unfinished_business(documents):
                     })
                     break
 
-    # Return all findings for the Ghost Report.
     return findings
 
+
 def check_documentation_basics(documents):
-    """ Report whether the project README is missing or empty. """
+    """Report whether the project README is missing or empty."""
     readmes = [
         document
         for document in documents
@@ -91,17 +93,49 @@ def check_documentation_basics(documents):
 
     return findings
 
-# Combine the inventory and deterministic findings for later AI analysis.
-def analyze_project(project_path, documents):
-    """ Collect repo context and combine analysis findings. """
-    inventory = inventory_project(project_path, documents)
 
-    # Run the basic checks and combine their findings.
+def assess_documentation_health(inventory, findings):
+    """Generate lightweight documentation health indicators."""
+    metadata = inventory["documentation_metadata"]
+
+    # Count basic documentation issues.
+    issue_types = {
+        "missing_readme",
+        "empty_readme",
+        "unfinished_business",
+    }
+
+    issue_count = sum(
+        1 for finding in findings
+        if finding["type"] in issue_types
+    )
+
+    return {
+        "document_count": inventory["document_count"],
+        "issue_count": issue_count,
+        "has_readme": any(
+            Path(path).name.lower().startswith("readme.")
+            for path in inventory["documentation_files"]
+        ),
+        "extension_counts": metadata["extension_counts"],
+    }
+
+
+def analyze_project(project_path, scan_results):
+    """Collect repository context and combine analysis findings."""
+    documents = scan_results["documents"]
+
+    inventory = inventory_project(project_path, scan_results)
+
+    # Run deterministic checks.
     findings = find_unfinished_business(documents)
     findings.extend(check_documentation_basics(documents))
 
-    # Return a consistent result for the report generator.
+    # Assess documentation health using existing findings.
+    health = assess_documentation_health(inventory, findings)
+
     return {
         "inventory": inventory,
         "findings": findings,
+        "health": health,
     }
