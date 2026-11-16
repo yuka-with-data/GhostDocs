@@ -1,7 +1,4 @@
-
-"""
-Organize analyzer results into structured documentation findings.
-"""
+"""Organize analyzer results into structured documentation findings."""
 
 # Map analyzer finding types to broader knowledge-gap categories.
 FINDING_CATEGORIES = {
@@ -12,7 +9,7 @@ FINDING_CATEGORIES = {
 
 
 def build_findings(analysis):
-    """Normalize and categorize findings from analyzer results."""
+    """Normalize findings and collect documentation intelligence."""
     structured_findings = []
 
     # Process each raw finding returned by the analyzer.
@@ -29,5 +26,25 @@ def build_findings(analysis):
             "evidence": finding["message"],
         })
 
-    # Return findings in a consistent structure.
-    return structured_findings
+    # Collect documentation inventory for the report.
+    inventory = analysis.get("inventory", {})
+    metadata = inventory.get("documentation_metadata", {})
+
+    documentation_overview = {
+        "document_count": inventory.get("document_count", 0),
+        "extension_counts": metadata.get("extension_counts", {}),
+        "directory_counts": metadata.get("directory_counts", {}),
+        "documentation_files": inventory.get(
+            "documentation_files", []
+        ),
+    }
+
+    # Collect documentation health indicators.
+    documentation_health = analysis.get("health", {})
+
+    # Return structured findings and reporting data.
+    return {
+        "findings": structured_findings,
+        "documentation_overview": documentation_overview,
+        "documentation_health": documentation_health,
+    }
