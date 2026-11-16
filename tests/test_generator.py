@@ -2,7 +2,6 @@
 
 from unittest.mock import Mock
 import pytest
-
 from ghostdocs import generator
 
 def test_generate_report_success(tmp_path, monkeypatch):
@@ -15,11 +14,15 @@ def test_generate_report_success(tmp_path, monkeypatch):
             "document_count": 1,
             "key_project_files": ["README.md"],
             "documentation_files": ["README.md"],
+            "documentation_metadata": {},
         },
         "findings": [],
+        "health": {},
     }
 
-    monkeypatch.setattr(generator, "scan_projects", lambda path: documents)
+    monkeypatch.setattr(
+        generator, "scan_projects", lambda path: {"documents": documents}
+    )
     monkeypatch.setattr(
         generator, "analyze_project", lambda path, docs: analysis
     )
@@ -77,7 +80,9 @@ def test_generate_report_invalid_limits(
 
 def test_generate_report_ollama_error(tmp_path, monkeypatch):
     """Verify Ollama failures produce an actionable error message."""
-    monkeypatch.setattr(generator, "scan_projects", lambda path: [])
+    monkeypatch.setattr(
+        generator, "scan_projects", lambda path: {"documents": []}
+    )
     monkeypatch.setattr(
         generator,
         "analyze_project",
@@ -87,11 +92,15 @@ def test_generate_report_ollama_error(tmp_path, monkeypatch):
                 "document_count": 0,
                 "key_project_files": [],
                 "documentation_files": [],
+                "documentation_metadata": {},
             },
             "findings": [],
+            "health": {},
         },
     )
-    monkeypatch.setattr(generator, "load_system_prompt", lambda: "Instructions")
+    monkeypatch.setattr(
+        generator, "load_system_prompt", lambda: "Instructions"
+    )
     monkeypatch.setattr(
         generator, "prepare_analysis_prompt", lambda context: context
     )
@@ -107,7 +116,9 @@ def test_generate_report_ollama_error(tmp_path, monkeypatch):
 
 def test_generate_report_empty_response(tmp_path, monkeypatch):
     """Verify an empty model response raises a clear error."""
-    monkeypatch.setattr(generator, "scan_projects", lambda path: [])
+    monkeypatch.setattr(
+        generator, "scan_projects", lambda path: {"documents": []}
+    )
     monkeypatch.setattr(
         generator,
         "analyze_project",
@@ -117,11 +128,15 @@ def test_generate_report_empty_response(tmp_path, monkeypatch):
                 "document_count": 0,
                 "key_project_files": [],
                 "documentation_files": [],
+                "documentation_metadata": {},
             },
             "findings": [],
+            "health": {},
         },
     )
-    monkeypatch.setattr(generator, "load_system_prompt", lambda: "Instructions")
+    monkeypatch.setattr(
+        generator, "load_system_prompt", lambda: "Instructions"
+    )
     monkeypatch.setattr(
         generator, "prepare_analysis_prompt", lambda context: context
     )
