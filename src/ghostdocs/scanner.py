@@ -1,4 +1,5 @@
 """Scan a project directory and collect documentation files and metadata."""
+# pylint: disable=duplicate-code
 
 from pathlib import Path
 
