@@ -1,4 +1,5 @@
 """Shared test utilities for GhostDocs."""
+# pylint: disable=duplicate-code
 
 def create_scan_results(documents):
     """Build scan results with document and directory metadata."""
