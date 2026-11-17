@@ -1,4 +1,5 @@
 """Test the documentation scanner."""
+# pylint: disable=duplicate-code
 
 import pytest
 from ghostdocs.scanner import scan_projects
