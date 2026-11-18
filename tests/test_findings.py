@@ -1,67 +1,67 @@
-
-"""Tests for structured documentation findings."""
+"""Tests for structured finding generation."""
 
 from ghostdocs.findings import build_findings
 
 
-def test_build_findings_categorizes_unfinished_business():
-    """Ensure unfinished markers receive the correct category."""
+def test_build_findings():
+    """Confirm findings are categorized and documentation data is collected."""
     analysis = {
-        "findings": [{
-            "type": "unfinished_business",
-            "path": "docs/setup.md",
-            "line": 12,
-            "message": "TODO: Update setup instructions.",
-        }]
+        "findings": [
+            {
+                "type": "unfinished_business",
+                "path": "README.md",
+                "line": 3,
+                "message": "TODO: Add installation instructions",
+            },
+            {
+                "type": "missing_readme",
+                "path": "README.md",
+                "message": "README is missing",
+            },
+        ],
+        "inventory": {
+            "document_count": 2,
+            "documentation_metadata": {
+                "extension_counts": {".md": 2},
+                "directory_counts": {"root": 1, "docs": 1},
+            },
+            "documentation_files": ["README.md", "docs/setup.md"],
+        },
+        "health": {"issue_count": 1},
     }
 
     result = build_findings(analysis)
 
-    assert result == [{
-        "category": "unresolved_markers",
-        "type": "unfinished_business",
-        "path": "docs/setup.md",
-        "line": 12,
-        "evidence": "TODO: Update setup instructions.",
-    }]
+    assert len(result["findings"]) == 2
+    assert result["findings"][0]["category"] == "unresolved_markers"
+    assert result["findings"][0]["type"] == "unfinished_business"
+    assert result["findings"][0]["line"] == 3
+    assert result["findings"][0]["evidence"] == (
+        "TODO: Add installation instructions"
+    )
 
+    assert result["findings"][1]["category"] == (
+        "documentation_completeness"
+    )
 
-def test_build_findings_categorizes_missing_readme():
-    """Ensure missing README findings are categorized."""
-    analysis = {
-        "findings": [{
-            "type": "missing_readme",
-            "path": "README.md",
-            "message": "No README file found.",
-        }]
+    assert result["documentation_overview"]["document_count"] == 2
+    assert result["documentation_overview"]["extension_counts"] == {
+        ".md": 2
     }
+    assert result["documentation_overview"]["documentation_files"] == [
+        "README.md",
+        "docs/setup.md",
+    ]
 
-    result = build_findings(analysis)
-
-    assert result[0]["category"] == "documentation_completeness"
-    assert result[0]["line"] is None
-
-
-def test_build_findings_categorizes_empty_readme():
-    """Ensure empty README findings are categorized."""
-    analysis = {
-        "findings": [{
-            "type": "empty_readme",
-            "path": "README.md",
-            "message": "README file is empty.",
-        }]
-    }
-
-    result = build_findings(analysis)
-
-    assert result[0]["category"] == "documentation_completeness"
+    assert result["documentation_health"]["issue_count"] == 1
 
 
-def test_build_findings_handles_empty_findings():
-    """Ensure an empty analysis produces an empty list."""
-    assert not build_findings({"findings": []})
+def test_build_findings_empty():
+    """Confirm empty analysis produces valid default reporting data."""
+    result = build_findings({})
 
-
-def test_build_findings_handles_missing_findings_key():
-    """Ensure missing findings data produces an empty list."""
-    assert not build_findings({})
+    assert not result["findings"]
+    assert result["documentation_overview"]["document_count"] == 0
+    assert not result["documentation_overview"]["extension_counts"]
+    assert not result["documentation_overview"]["documentation_files"]
+    assert not result["documentation_health"]

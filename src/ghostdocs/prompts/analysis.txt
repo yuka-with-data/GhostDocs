@@ -7,19 +7,29 @@ Analyze the provided repository context to identify important knowledge that may
 - Are important decisions, assumptions, or dependencies unexplained?
 - Do the provided files suggest gaps between implementation and documentation?
 - What unfinished work might need clarification?
+- What documentation exists, and how is it organized?
+- What does the available metadata and findings suggest about documentation health?
 
 ## Report Structure
 
-### Lost Knowledge
-identify potential gaps in project understanding, setup, decisions, assumptions, or maintenance knowledge.
+### 🔮 Documentation Overview
+Summarize the repository's documentation landscape using supplied metadata.
+Include document counts, file formats, and directory distribution when available.
 
-### Ghost Sighings
+### 👻 Lost Knowledge
+Identify potential gaps in project understanding, setup, decisions, assumptions, or maintenance knowledge.
+
+### 🕯️ Ghost Sightings
 Present specific evidence that suggests a knowledge gap.
 Reference relevant file paths and explain why each clue matters.
 
-### Resurrection Plan
+### 🩺 Documentation Health
+Provide a concise assessment of documentation completeness and potential issues.
+Use available metadata and findings. Avoid unsupported scores or assumptions.
+
+### 🎃 Resurrection Plan
 Recommend practical steps to investigate or document the identified gaps.
-Pripritize actions by their likely usefulness to maintainers.
+Prioritize actions by their likely usefulness to maintainers.
 
 ## Evidence Rules
 - Use only the supplied repository content and findings.

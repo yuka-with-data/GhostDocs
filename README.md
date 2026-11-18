@@ -15,9 +15,13 @@
 
 Every software proejct accumulates knowledge over time. Some decisions go undocumented, old instructions become outdated, and important context gets lost.
 
-`GhostDocs` helps maintainers investigate these potential knowledge gaps by analysing repository content with a locally Ollama model.
+`GhostDocs` helps maintainers investigate these potential knowledge gaps by analysing repository content through a combination of repository scanning, rule-based analysis, and locally running AI models.
 
-Its goal is to answer one question:
+Its goal is to answer three questions:
+
+- What documentation does this repository have?
+- What important knowledge has this repository lost, forgotten, or failed to document?
+- How healthy and maintainable is its existing documentation?
 
 > What important knowledge has this repository lost, forgotten, or failed to document?
 
@@ -26,11 +30,15 @@ Its goal is to answer one question:
 ## What It Does
 
 - Scans repositories to discover relevant project files and documentation.
+- Provides an overview of repository documentation and its structure.
 - Identifies potential knowledge gaps using rule-based analysis.
+- Evaluates documentation health using repository findings.
 - Uses local AI analysis through Ollama to investigate findings and their context.
-- Generates Markdown reports organized into three sections:
+- Generates Markdown reports organized into five sections:
+  - 📖 Documentation Overview
   - 👻 Lost Knowledge
   - 🕯️ Ghost Sightings
+  - 🩺 Documentation Health
   - 🎃 Resurrection Plan
 
 `GhostDocs` is designed to help maintainers reflect on what their projects might be missing and decide what deserves further investigation.

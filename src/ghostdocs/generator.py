@@ -8,10 +8,38 @@ from ghostdocs.prompts import load_system_prompt, prepare_analysis_prompt
 from ghostdocs.scanner import scan_projects
 from ghostdocs.findings import build_findings
 
+
 # Set sensible defaults for small personal repositories.
 DEFAULT_MODEL = "gemma4:e4b"
 DEFAULT_CONTEXT_BUDGET = 24_000
 DEFAULT_NUM_CTX = 16_384
+
+def _build_repository_context(scan_results, analysis, findings, context_budget):
+    """Build repository context within the configured character budget."""
+    documents = scan_results["documents"]
+
+    repository_context = (
+        f"Project inventory:\n{analysis['inventory']}\n\n"
+        f"Documentation Overview:\n"
+        f"{findings['documentation_overview']}\n\n"
+        f"Documentation Health:\n"
+        f"{findings['documentation_health']}\n\n"
+        f"Structured findings:\n{findings['findings']}\n\n"
+    )
+
+    for document in documents:
+        section = (
+            f"--- FILE: {document['path']} ---\n"
+            f"{document['content']}\n\n"
+        )
+
+        if len(repository_context) + len(section) > context_budget:
+            break
+
+        repository_context += section
+
+    return repository_context
+
 
 def generate_report(
     project_path: str | Path,
@@ -29,28 +57,17 @@ def generate_report(
     if num_ctx <= 0:
         raise ValueError("num_ctx must be greater than zero.")
 
-    # Scan and analyze the repository using the existing modules.
-    documents = scan_projects(project_path)
-    analysis = analyze_project(project_path, documents)
+    # Scan and analyze the repository.
+    scan_results = scan_projects(project_path)
+    analysis = analyze_project(project_path, scan_results)
     findings = build_findings(analysis)
 
-    # Prepare a compact context from the inventory, findings, and documents.
-    repository_context = (
-        f"Project inventory:\n{analysis['inventory']}\n\n"
-        f"Structured findings:\n{findings}\n\n"
+    repository_context = _build_repository_context(
+        scan_results,
+        analysis,
+        findings,
+        context_budget,
     )
-
-    for document in documents:
-        section = (
-            f"--- FILE: {document['path']} ---\n"
-            f"{document['content']}\n\n"
-        )
-
-        # Stop adding files when the character budget is reached.
-        if len(repository_context) + len(section) > context_budget:
-            break
-
-        repository_context += section
 
     # Prepare prompts for the local model.
     system_prompt = load_system_prompt()
