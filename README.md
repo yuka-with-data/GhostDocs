@@ -166,15 +166,32 @@ ghostdocs --help
 
 If `--output` is omitted, the report is printed directly in the terminal.
 
-## Limitations (Alpha)
+## Known Limitations (Alpha)
 
-`GhostDocs` is an early-stage project. Keep the following limitations in mind:
+`GhostDocs` is an early-stage project primarily designed for small to medium-sized software repositories.
 
-- Repository size: Designed primarily for small repositories. Large repositories may exceed the available context budget.
-- Context budget: Repository files are added until a fixed character budget is reached. Files beyond that limit may not be analyzed.
-- AI accuracy: Findings and recommendations depend on the available repository content and the selected Ollama model. Results may be incomplete or inaccurate.
-- No external verification: `GhostDocs` analyzes supplied repository content and does not independently verify findings against external sources.
-- No automatic changes: `GhostDocs` generates reports but does not modify repository files or resolve identified issues.
-- Prompt injection: Safeguards are included, but they cannot guarantee complete protection against malicious instructions embedded in repository content.
+### Repository Size (Estimated Guideline)
+
+| Size | Approximate File Count |
+|---|---:|
+| Small | 1–100 |
+| Medium | 100–500 |
+| Large | 500–2,000 |
+| Very Large | 2,000+ |
+
+These are preliminary testing guidelines, not enforced limits. Performance depends on repository content, file sizes, available system resources, and the selected Ollama model.
+
+### Context and Processing Contraints
+
+- Context Budget: Repository files are added until a fixed character budget is reached. Files beyond that limit may not be analyzed.
+- Context Window: The selected Ollama model has a limited context capacity, which affects how much repository content it can process at once.
+- Context Budget vs. Context Window: `GhostDocs` limits the repository content prepared for analysis, while Ollama's context window determines the model's available context capacity.
+
+### AI and Analysis Limitations
+
+- AI Accuracy: Findings and recommendations depend on the available repository content and the selected Ollama model. Results may be incomplete or inaccurate.
+- No External Verification: `GhostDocs` analyzes supplied repository content and does not independently verify findings against external sources.
+- No Automatic Changes: `GhostDocs` generates reports but does not modify repository files or resolve identified issues.
+- Prompt Injection: Safeguards are included, but they cannot guarantee complete protection against malicious instructions embedded in repository content.
 
 Treat generated reports as suggestions for maintainer review, not definitive assessments of a project.
