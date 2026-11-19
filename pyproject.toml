@@ -30,6 +30,10 @@ dev = [
 [tool.setuptools.packages.find]
 where = ["src"]
 
+# Include prompt templates in the installed package.
+[tool.setuptools.package-data]
+ghostdocs = ["prompts/*.txt"]
+
 # Configure pytest to discover tests in the tests directory.
 [tool.pytest.ini_options]
 testpaths = ["tests"]
