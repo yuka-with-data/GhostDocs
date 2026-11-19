@@ -172,12 +172,12 @@ If `--output` is omitted, the report is printed directly in the terminal.
 
 ### Repository Size (Estimated Guideline)
 
-| Size | Approximate File Count |
-|---|---:|
-| Small | 1–100 |
-| Medium | 100–500 |
-| Large | 500–2,000 |
-| Very Large | 2,000+ |
+| Size       | Approximate File Count |
+| ---------- | ---------------------: |
+| Small      | 1–100                  |
+| Medium     | 100–500                |
+| Large      | 500–2,000              |
+| Very Large | 2,000+                 |
 
 These are preliminary testing guidelines, not enforced limits. Performance depends on repository content, file sizes, available system resources, and the selected Ollama model.
 
