@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Page metadata and browser settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111014">
+
+    <meta name="description"
+        content="GhostDocs investigates repository documentation, uncovers lost knowledge, and generates AI-assisted documentation insights using local AI.">
+
+    <title>GhostDocs | Uncover the Knowledge in Your Repository</title>
+
+    <!-- Global stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ========================================
+         1. Header & Navigation
+         ======================================== -->
+
+    <header class="site-header">
+        <div class="container header-content">
+
+            <a href="#home" class="logo" aria-label="GhostDocs home">
+                <span class="logo-icon">👻</span>
+                <span>GhostDocs</span>
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#workflow">Workflow</a>
+                <a href="#features">Features</a>
+                <a href="#report">Sample Report</a>
+                <a href="#getting-started">Get Started</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- ========================================
+             2. Hero
+             ======================================== -->
+
+        <section id="home" class="hero">
+            <div class="container hero-content">
+
+                <p class="hero-label">
+                    LOCAL-FIRST DOCUMENTATION INTELLIGENCE
+                </p>
+
+                <h1>
+                    Uncover the <span class="text-purple">Ghosts</span>
+                    in Your Repository.
+                </h1>
+                <p class="hero-tagline">
+                    Discover lost knowledge.
+                    Bring documentation back to life.
+                </p>
+                <p class="hero-description">
+                    Your repository holds more knowledge than its
+                    documentation reveals. GhostDocs investigates
+                    what's documented, what's missing, and what
+                    might have been forgotten.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#getting-started" class="btn btn-primary">
+                        Get Started
+                    </a>
+
+                    <a href="#workflow" class="btn btn-secondary">
+                        Explore the Workflow
+                    </a>
+                </div>
+
+                <div class="hero-meta">
+                    <span>Python</span>
+                    <span>Local AI</span>
+                    <span>Ollama</span>
+                    <span>Open Source</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================
+             3. About
+             ======================================== -->
+
+        <section id="about" class="about section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-eyebrow">BEYOND DOCUMENTATION CHECKS</p>
+
+                    <h2>
+                        Documentation tells you what.
+                        GhostDocs investigates <span class="text-green">why</span>.
+                    </h2>
+
+                    <p class="section-description">
+                        GhostDocs is a lightweight documentation intelligence
+                        tool that combines repository scanning, rule-based
+                        analysis, and local AI investigation to uncover
+                        potentially undocumented knowledge.
+                    </p>
+                </div>
+
+                <div class="about-grid">
+
+                    <article class="card about-card">
+                        <span class="feature-icon">📁</span>
+                        <h3>Repository Context</h3>
+                        <p>
+                            Explore existing documentation, project files,
+                            and repository structure.
+                        </p>
+                    </article>
+
+                    <article class="card about-card">
+                        <span class="feature-icon">🔍</span>
+                        <h3>Knowledge Investigation</h3>
+                        <p>
+                            Examine relationships between project information
+                            and identify potential documentation gaps.
+                        </p>
+                    </article>
+
+                    <article class="card about-card">
+                        <span class="feature-icon">📝</span>
+                        <h3>Actionable Insights</h3>
+                        <p>
+                            Generate structured Markdown reports with
+                            findings and suggested improvements.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================
+             4. Workflow
+             ======================================== -->
+
+        <section id="workflow" class="workflow section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-eyebrow">THE INVESTIGATION PROCESS</p>
+                    <h2>How GhostDocs Works</h2>
+
+                    <p class="section-description">
+                        From repository scanning to documentation insights,
+                        GhostDocs follows a structured investigation process.
+                    </p>
+                </div>
+
+                <div class="workflow-grid">
+
+                    <article class="card workflow-card">
+                        <span class="workflow-number">01</span>
+                        <h3>Scan</h3>
+                        <p>
+                            Collect repository documentation and
+                            relevant project metadata.
+                        </p>
+                    </article>
+
+                    <article class="card workflow-card">
+                        <span class="workflow-number">02</span>
+                        <h3>Analyze</h3>
+                        <p>
+                            Apply rule-based analysis to identify
+                            documentation patterns and potential gaps.
+                        </p>
+                    </article>
+
+                    <article class="card workflow-card">
+                        <span class="workflow-number">03</span>
+                        <h3>Investigate</h3>
+                        <p>
+                            Use repository context and a local AI model
+                            to investigate potentially lost knowledge.
+                        </p>
+                    </article>
+
+                    <article class="card workflow-card">
+                        <span class="workflow-number">04</span>
+                        <h3>Generate</h3>
+                        <p>
+                            Produce a structured Markdown report
+                            containing findings and recommendations.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================
+             5. Features
+             ======================================== -->
+
+        <section id="features" class="features section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-eyebrow">WHAT LIES BENEATH?</p>
+                    <h2>Five Perspectives. One Investigation.</h2>
+
+                    <p class="section-description">
+                        GhostDocs organizes its findings into five
+                        perspectives to help maintainers understand
+                        their repository documentation.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+
+                    <article class="card feature-card">
+                        <span class="feature-icon">🔮</span>
+                        <h3>Documentation Overview</h3>
+                        <p>
+                            Understand the repository's documentation
+                            landscape and content distribution.
+                        </p>
+                    </article>
+
+                    <article class="card feature-card">
+                        <span class="feature-icon">👻</span>
+                        <h3>Lost Knowledge</h3>
+                        <p>
+                            Discover potentially undocumented design
+                            decisions, project history, and intent.
+                        </p>
+                    </article>
+
+                    <article class="card feature-card">
+                        <span class="feature-icon">🕯️</span>
+                        <h3>Ghost Sightings</h3>
+                        <p>
+                            Examine specific evidence and patterns
+                            suggesting documentation gaps.
+                        </p>
+                    </article>
+
+                    <article class="card feature-card">
+                        <span class="feature-icon">🩺</span>
+                        <h3>Documentation Health</h3>
+                        <p>
+                            Evaluate documentation discoverability,
+                            structure, and areas needing improvement.
+                        </p>
+                    </article>
+
+                    <article class="card feature-card">
+                        <span class="feature-icon">🎃</span>
+                        <h3>Resurrection Plan</h3>
+                        <p>
+                            Receive practical recommendations for
+                            preserving and documenting lost knowledge.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================
+             6. Real-World Sample Report
+             ======================================== -->
+
+        <section id="report" class="report section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-eyebrow">A REAL-WORLD EXAMPLE</p>
+                    <h2>See What GhostDocs Uncovered</h2>
+
+                    <p class="section-description">
+                        An example investigation of a local-first
+                        developer journaling project.
+                    </p>
+                </div>
+
+                <!-- Sample report container -->
+                <div class="report-preview card">
+                    <!-- Sample repository context -->
+                    <div class="report-context card">
+
+                        <div>
+                            <span class="context-label">SAMPLE PROJECT</span>
+                            <h3>Developer Reflection Tool</h3>
+                            <p>
+                                A local-first application for developer
+                                journaling and AI-assisted reflection.
+                            </p>
+                        </div>
+
+                        <div class="report-stats">
+
+                            <div class="stat">
+                                <strong>14</strong>
+                                <span>Documents</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>9</strong>
+                                <span>Markdown</span>
+                            </div>
+
+                            <div class="stat">
+                                <strong>5</strong>
+                                <span>Text files</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="report-header">
+                        <div class="report-title">
+                            <div>
+                                <strong>GhostDocs Investigation</strong>
+                                <span>Sample Report · Markdown</span>
+                            </div>
+                        </div>
+
+                        <span class="report-status">
+                            COMPLETED
+                        </span>
+                    </div>
+
+
+                    <!-- Overview -->
+                    <article class="report-section">
+                        <h3>
+                            <span>🔮</span>
+                            Documentation Overview
+                        </h3>
+
+                        <p>
+                            The repository has a solid starting
+                            documentation structure, including a
+                            detailed README and examples.
+                        </p>
+
+                        <p>
+                            However, its dated journal entries and
+                            system prompts also contain valuable
+                            project knowledge.
+                        </p>
+                    </article>
+
+
+                    <!-- Lost Knowledge -->
+                    <article class="report-section">
+                        <h3>
+                            <span>👻</span>
+                            Lost Knowledge
+                        </h3>
+
+                        <p>
+                            The most significant gap is the absence
+                            of formalized design philosophy and
+                            development history.
+                        </p>
+
+                        <ul>
+                            <li>
+                                <strong>Architectural Intent:</strong>
+                                The reasoning behind local-first design
+                                and entry storage is not formally documented.
+                            </li>
+
+                            <li>
+                                <strong>Scope Evolution:</strong>
+                                The project's shift toward intentional
+                                growth and reflection is scattered
+                                across journal entries.
+                            </li>
+
+                            <li>
+                                <strong>Advanced Usage:</strong>
+                                Potential integration and analysis
+                                workflows lack documentation.
+                            </li>
+                        </ul>
+                    </article>
+
+
+                    <!-- Ghost Sightings -->
+                    <article class="report-section">
+                        <h3>
+                            <span>🕯️</span>
+                            Ghost Sightings
+                        </h3>
+
+                        <p>
+                            Several repository artifacts provide
+                            evidence of undocumented design decisions:
+                        </p>
+
+                        <ul>
+                            <li>
+                                Journal entries reveal an evolving
+                                project philosophy.
+                            </li>
+
+                            <li>
+                                AI system prompts contain behavioral
+                                constraints without explanatory design notes.
+                            </li>
+
+                            <li>
+                                A proposed monthly summary feature
+                                appears in the README without a
+                                documented implementation plan.
+                            </li>
+                        </ul>
+                    </article>
+
+
+                    <!-- Documentation Health -->
+                    <article class="report-section">
+                        <h3>
+                            <span>🩺</span>
+                            Documentation Health
+                        </h3>
+
+                        <p>
+                            The project is well documented for
+                            first-time users, but less effective
+                            at explaining its technical and
+                            philosophical development.
+                        </p>
+
+                        <div class="finding-highlight">
+                            <span class="finding-indicator"></span>
+                            <p>
+                                <strong>Key insight:</strong>
+                                Documentation explains how to use
+                                the tool, but does not fully explain
+                                why it was designed that way.
+                            </p>
+                        </div>
+                    </article>
+
+
+                    <!-- Resurrection Plan -->
+                    <article class="report-section">
+                        <h3>
+                            <span>🎃</span>
+                            Resurrection Plan
+                        </h3>
+
+                        <p>
+                            GhostDocs recommends four practical
+                            improvements:
+                        </p>
+
+                        <ol>
+                            <li>
+                                Create a <code>DESIGN_PRINCIPLES.md</code>
+                                document to formalize project philosophy.
+                            </li>
+
+                            <li>
+                                Explain the design decisions behind
+                                the AI prompt system.
+                            </li>
+
+                            <li>
+                                Document future features and their
+                                intended requirements.
+                            </li>
+
+                            <li>
+                                Curate useful development reflections
+                                into anonymized design case studies.
+                            </li>
+                        </ol>
+                    </article>
+
+
+                    <div class="report-footer">
+                        <span>END OF SAMPLE REPORT</span>
+                        <span>GhostDocs v0.2.0</span>
+                    </div>
+
+                </div>
+
+                <p class="report-note">
+                    Condensed and anonymized from an actual
+                    GhostDocs investigation. Findings are
+                    AI-generated and should be reviewed by maintainers.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================
+             7. Getting Started
+             ======================================== -->
+
+        <section id="getting-started" class="getting-started section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <p class="section-eyebrow">START YOUR INVESTIGATION</p>
+                    <h2>Ready to Uncover the Unknown?</h2>
+
+                    <p class="section-description">
+                        Bring GhostDocs into your repository
+                        and start investigating what your
+                        documentation might be missing.
+                    </p>
+                </div>
+
+                <div class="card getting-started-card">
+
+                    <h3>What You'll Need</h3>
+
+                    <ul class="requirements-list">
+                        <li>Python 3.12 or newer</li>
+                        <li>Ollama installed and running</li>
+                        <li>A supported local AI model</li>
+                        <li>A repository to investigate</li>
+                    </ul>
+
+                    <p>
+                        Ready to try GhostDocs? Visit the GitHub repository
+                        for installation instruction, configulation, and usage.
+                    </p>
+
+                    <a href="https://github.com/yuka-with-data/GhostDocs" class="btn btn-primary">
+                        View on GitHub
+                    </a>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ========================================
+         8. Footer
+         ======================================== -->
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+
+            <a href="#home" class="logo">
+                👻 GhostDocs
+            </a>
+
+            <p>
+                Uncover lost knowledge.
+                Bring documentation back to life.
+            </p>
+
+            <p class="footer-copyright">
+                Open source · Local-first · Built with Python, Ollama, and a little bit of curiosity.
+            </p>
+
+        </div>
+    </footer>
+
+
+    <!-- Global JavaScript -->
+    <script src="js/main.js" defer></script>
+
+</body>
+</html>
