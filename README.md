@@ -6,6 +6,7 @@
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
 ![Ollama](https://img.shields.io/badge/AI-Ollama-black)
 ![Status](https://img.shields.io/badge/Status-Alpha-orange)
+[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://yuka-with-data.github.io/GhostDocs/)
 
 **Project Status: Alpha**
 
