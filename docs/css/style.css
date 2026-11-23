@@ -1,0 +1,469 @@
+
+/*
+ * GhostDocs Demo Website
+ * Global styles, Halloween color palette, typography, and layout foundation.
+ */
+
+/* ========================================
+   Design Tokens
+   ======================================== */
+
+:root {
+    /* Color palette */
+    --color-background: #111014;
+    --color-surface: #1B1820;
+    --color-surface-hover: #25202D;
+
+    --color-primary: #7929A8;
+    --color-primary-hover: #9638C7;
+
+    --color-accent: #8BC34A;
+    --color-warning: #F28C28;
+
+    --color-text: #E8E3ED;
+    --color-text-muted: #A49BAB;
+
+    --color-border: #352D3D;
+
+    /* Typography */
+    --font-primary: "Inter", sans-serif;
+    --font-mono: "Consolas", "Courier New", monospace;
+
+    /* Font sizes */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.25rem;
+    --text-xl: 1.75rem;
+    --text-2xl: 2.5rem;
+    --text-3xl: 3.5rem;
+
+    /* Spacing */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    --space-2xl: 6rem;
+
+    /* Layout */
+    --container-width: 1100px;
+    --header-height: 72px;
+
+    /* Effects */
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --transition: 0.2s ease;
+}
+
+
+/* ========================================
+   CSS Reset
+   ======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+}
+
+body {
+    min-width: 320px;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   Typography
+   ======================================== */
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: var(--text-3xl);
+}
+
+h2 {
+    font-size: var(--text-2xl);
+}
+
+h3 {
+    font-size: var(--text-xl);
+}
+
+p {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+}
+
+code,
+pre {
+    font-family: var(--font-mono);
+}
+
+/* Text colors */
+.text-purple {
+    color: #9333ea;
+}
+
+.text-green {
+    color: #8BC34A;
+}
+
+.text-orange {
+    color: #F28C28;
+}
+
+
+/* ========================================
+   Links and Buttons
+   ======================================== */
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+
+/* ========================================
+   Reusable Layout
+   ======================================== */
+
+.container {
+    width: min(90%, var(--container-width));
+    margin-inline: auto;
+}
+
+section {
+    padding-block: var(--space-2xl);
+}
+
+.section-title {
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.card {
+    padding: var(--space-md);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+
+/* ========================================
+   Responsive Foundation
+   ======================================== */
+
+@media (max-width: 768px) {
+    :root {
+        --text-3xl: 2.5rem;
+        --text-2xl: 2rem;
+        --space-2xl: 4rem;
+    }
+}
+
+
+/* ========================================
+   Header Layout
+   ======================================== */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+    gap: 2rem;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+}
+
+.main-nav a {
+    white-space: nowrap;
+    font-size: var(--text-sm);
+}
+
+
+/* ========================================
+   Hero Layout
+   ======================================== */
+
+.hero-content {
+    text-align: center;
+    max-width: 850px;
+}
+
+.hero-description {
+    max-width: 680px;
+    margin: 1.5rem auto;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.5rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-secondary {
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.hero-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+}
+
+.hero-tagline {
+    color: var(--color-accent);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+}
+
+/* ========================================
+   Sample Report Layout
+   ======================================== */
+
+   /* Sample report container */
+.report-preview {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Report header */
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: var(--color-surface-hover);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.report-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.report-title strong,
+.report-title span {
+    display: block;
+}
+
+.report-title span {
+    color: var(--color-text-muted);
+    font-size: var(--text-xs);
+}
+
+.report-status {
+    color: var(--color-accent);
+    font-size: var(--text-xs);
+    font-weight: 700;
+}
+
+/* Individual report sections */
+.report-section {
+    padding: 2rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.report-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: var(--text-lg);
+}
+
+.report-section p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.report-section ul,
+.report-section ol {
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.report-section li {
+    padding-left: 0.4rem;
+    margin-bottom: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+.report-section li strong {
+    color: var(--color-text);
+}
+
+.report-section code {
+    color: var(--color-accent);
+    background: var(--color-background);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+}
+
+/* Key finding */
+.finding-highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.25rem;
+    margin-top: 1.5rem;
+    background: var(--color-background);
+    border-left: 3px solid var(--color-warning);
+    border-radius: var(--radius-sm);
+}
+
+.finding-highlight p {
+    margin: 0;
+}
+
+.finding-indicator {
+    flex-shrink: 0;
+    width: 9px;
+    height: 9px;
+    margin-top: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-warning);
+}
+
+.report-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+}
+
+.report-note {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: var(--text-sm);
+}
+
+
+/* ==========================
+   Getting Started Section
+   ========================== */
+
+.getting-started-card .requirements-list {
+    margin-bottom: 1.5rem;
+}
+
+.getting-started-card h3 {
+    margin-bottom: 1rem;
+}
+
+/* ==========================
+   Mobile Navigation
+   ========================== */
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+
+    .header-content {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+}
