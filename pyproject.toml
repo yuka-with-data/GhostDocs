@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 # Define project metadata and runtime dependencies.
 [project]
 name = "ghostdocs"
-version = "0.1.0"
+version = "0.2.1"
 description = "A local-first documentation analysis tool that uncovers forgotten knowledge using Ollama."
 readme = "README.md"
 requires-python = ">=3.12"
