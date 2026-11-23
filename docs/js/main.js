@@ -20,3 +20,14 @@ menuToggle.addEventListener("click", () => {
         isExpanded ? "Open navigation menu" : "Close navigation menu"
     );
 });
+
+// Close navigation after selecting a link.
+mainNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+        mainNav.classList.remove("active");
+
+        // Reset accessibility attributes.
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+    });
+});
