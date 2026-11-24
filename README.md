@@ -7,6 +7,7 @@
 ![Ollama](https://img.shields.io/badge/AI-Ollama-black)
 ![Status](https://img.shields.io/badge/Status-Alpha-orange)
 [![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://yuka-with-data.github.io/GhostDocs/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/license/mit)
 
 **Project Status: Alpha**
 
