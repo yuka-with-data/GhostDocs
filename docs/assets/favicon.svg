@@ -1,0 +1,14 @@
+
+<!-- Minimal GhostDocs favicon -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 64 64">
+  <path
+    d="M12 29a20 20 0 0 1 40 0v24l-8-5-7 5-5-5-7 5-6-5-7 5z"
+    fill="#DCD6E8"
+    stroke="#625875"
+    stroke-width="3"
+    stroke-linejoin="round"
+  />
+  <circle cx="25" cy="29" r="3" fill="#334155"/>
+  <circle cx="39" cy="29" r="3" fill="#334155"/>
+</svg>
