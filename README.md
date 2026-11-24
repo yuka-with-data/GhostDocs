@@ -145,10 +145,10 @@ ghostdocs .
 ghostdocs path/to/project
 
 # Save the report as a Markdown file.
-ghostdocs . --output reports/ghost-report.md
+ghostdocs . --output GhostDocs/doc-analysis.md
 
 # Save to a nested directory (created automatically if needed).
-ghostdocs . --output output/analysis/ghost-report.md
+ghostdocs . --output GhostDocs/report/doc-analysis.md
 
 # Use a different installed Ollama model.
 ghostdocs . --model llama3.2
